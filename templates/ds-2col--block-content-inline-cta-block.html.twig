@@ -1,0 +1,28 @@
+{%
+  set classes = [
+  'ds-2col',
+  'clearfix',
+  'container-ten',
+  content['#localized_versions'] ? 'localized' : ''
+]
+%}
+
+<{{ outer_wrapper }}{{ attributes.addClass(classes) }}
+{% if content['#localized_versions'] %}
+  data-localized-locations="{{ content['#localized_versions'] }}"
+{% endif %}
+{#For troubleshooting and testing.#}
+data-block-id="{{content['#block_content'].id.value }}">
+{{ title_suffix.contextual_links }}
+    <{{ left_wrapper }}{{ left_attributes.addClass('group-left') }}>
+    {{ left }}
+    </{{ left_wrapper }}>
+
+    <{{ right_wrapper }}{{ right_attributes.addClass('group-right', 'responsive-bg-image') }}>
+        <div class="hsus-background-image">{{ right }}</div>
+    </{{ right_wrapper }}>
+</{{ outer_wrapper }}>
+
+<div class="caption-below container-ten">
+	{% include '@ts_hsus/ts_custom/block-caption.html.twig' %}
+</div>

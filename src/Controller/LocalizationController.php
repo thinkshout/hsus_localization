@@ -58,7 +58,7 @@ class LocalizationController extends ControllerBase {
       $block_content = $this->entityTypeManager
         ->getViewBuilder('block_content')
         ->view($block, 'default');
-      // @todo Fix problem: update to render $block_content. See PR #2031.
+      // @todo Fix problem: update to render $block_content. See PR #1.
       $rendered_block = $this->renderer->renderRoot($block_content);
       return new Response($rendered_block);
     }

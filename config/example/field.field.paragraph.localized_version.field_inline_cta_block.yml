@@ -1,0 +1,29 @@
+uuid: 2662e529-fd6f-45f9-b570-9263a4113160
+langcode: en
+status: true
+dependencies:
+  config:
+    - block_content.type.inline_cta_block
+    - field.storage.paragraph.field_inline_cta_block
+    - paragraphs.paragraphs_type.localized_version
+id: paragraph.localized_version.field_inline_cta_block
+field_name: field_inline_cta_block
+entity_type: paragraph
+bundle: localized_version
+label: 'Localized Inline CTA Block'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:block_content'
+  handler_settings:
+    target_bundles:
+      inline_cta_block: inline_cta_block
+    sort:
+      field: _none
+      direction: ASC
+    auto_create: false
+    auto_create_bundle: ''
+field_type: entity_reference

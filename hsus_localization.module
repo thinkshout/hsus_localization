@@ -1,0 +1,95 @@
+<?php
+
+/**
+ * @file
+ * Primary module hooks for HSUS Localization module.
+ */
+
+use Drupal\Core\Entity\Display\EntityViewDisplayInterface;
+use Drupal\Core\Entity\EntityInterface;
+use Drupal\Core\Form\FormStateInterface;
+use Drupal\Core\Render\Element;
+
+/**
+ * Implements hook_form_FORM_ID_alter().
+ */
+function hsus_localization_form_layout_paragraphs_component_form_alter(&$form, FormStateInterface $form_state) {
+  if ($form['#paragraph']->getType() == 'localized_version' && $form['#paragraph']->getParentEntity()) {
+    $block_type = $form['#paragraph']->getParentEntity()->bundle();
+    foreach (Element::children($form) as $fieldname) {
+      if (isset($form[$fieldname]['widget']) && $form[$fieldname]['widget']['#type'] === 'fieldset') {
+        if ($fieldname !== "field_$block_type") {
+          $form[$fieldname]['widget']['#access'] = FALSE;
+        }
+        else {
+          $form[$fieldname]['widget']['#required'] = TRUE;
+        }
+      }
+    }
+  }
+}
+
+/**
+ * Implements hook_form_BASE_FORM_ID_alter().
+ */
+function hsus_localization_form_block_content_form_alter(&$form, FormStateInterface $form_state) {
+  if (isset($form['field_localized_versions']) &&
+    isset($form['field_localized_versions']['widget']['layout_paragraphs_builder']) &&
+    $form_state->getBuildInfo()['callback_object']->getEntity()->isNew()
+  ) {
+    // We can't add localized version on new blocks because the component form
+    // can't figure out the correct block type until it's been saved once.
+    $form['field_localized_versions']['widget']['#access'] = FALSE;
+    $form['localized_versions_notice'] = [
+      '#markup' => t('Localized version configuration available after saving.'),
+      '#weight' => $form['field_localized_versions']['#weight'],
+    ];
+  }
+}
+
+/**
+ * Implements hook_ENTITY_TYPE_view_alter().
+ */
+function hsus_localization_block_content_view_alter(array &$build, EntityInterface $entity, EntityViewDisplayInterface $display) {
+  if ($entity->hasField('field_localized_versions')) {
+    if ($entity->field_localized_versions->count()) {
+      if (in_array($display->getMode(), ['default', 'full'])) {
+        $build['#attached']['library'][] = 'hsus_localization/localized.lookup';
+      }
+      $localized_versions = [];
+      foreach ($entity->field_localized_versions->referencedEntities() as $localized_version) {
+        $localized_versions[] = $localized_version->field_state->value . ':' . $localized_version->{'field_' . $entity->bundle()}->target_id;
+      }
+      $build['#localized_versions'] = implode(' ', $localized_versions);
+    }
+    else {
+      $build['#localized_versions'] = FALSE;
+    }
+  }
+}
+
+/**
+ * Implements hook_inline_entity_form_table_fields_alter().
+ */
+function hsus_localization_inline_entity_form_table_fields_alter(array &$fields, array $context) {
+  if ($context['entity_type'] === 'block_content' && in_array('two_column_cta_block', $context['allowed_bundles']) || in_array('homepage_hero_block', $context['allowed_bundles'])) {
+    $fields['localizations'] = [
+      'type' => 'callback',
+      'label' => t('Localizations'),
+      'weight' => 2,
+      'callback' => '_hsus_localization_get_localized_versions',
+    ];
+  }
+}
+
+/**
+ * Gets node created date.
+ */
+function _hsus_localization_get_localized_versions($entity) {
+  $localized_versions = [];
+  foreach ($entity->field_localized_versions->referencedEntities() as $localized_version) {
+    $localized_versions[] = $localized_version->field_state->value . ": " . $localized_version->{'field_' . $entity->bundle()}->entity->label();
+  }
+  sort($localized_versions);
+  return implode('<br />', $localized_versions);
+}

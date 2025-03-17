@@ -1,0 +1,7 @@
+name: HSUS Localization
+type: module
+description: 'Adds features to display unique content based on a site visitors location.'
+package: HSUS
+core_version_requirement: ^10
+dependencies:
+  - smart_ip:smart_ip

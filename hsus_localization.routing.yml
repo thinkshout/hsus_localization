@@ -1,0 +1,20 @@
+#Routing for custom block
+hsus_localization.block_route:
+  path: '/localized/{id}'
+  defaults:
+    _controller: '\Drupal\hsus_localization\Controller\LocalizationController::displayBlock'
+    _title: 'Custom Block'
+  requirements:
+    _permission: 'access content'
+    id: '\d+'
+    type: '[a-zA-Z_]+'
+
+# Routing for IP lookup
+hsus_localization.ip_lookup:
+  path: '/ip-lookup/{ip}'
+  defaults:
+    _controller: '\Drupal\hsus_localization\Controller\LocalizationController::lookupIp'
+    _title: 'IP Lookup'
+  requirements:
+    _permission: 'access content'
+    ip: '\d{1,3}\.\d{1,3}\.\d{1,3}\.\d{1,3}'

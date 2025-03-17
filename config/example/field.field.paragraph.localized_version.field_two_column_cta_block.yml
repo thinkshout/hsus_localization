@@ -1,0 +1,29 @@
+uuid: 7f9f5da7-8bd5-45cd-a1b0-779c9a18325c
+langcode: en
+status: true
+dependencies:
+  config:
+    - block_content.type.two_column_cta_block
+    - field.storage.paragraph.field_two_column_cta_block
+    - paragraphs.paragraphs_type.localized_version
+id: paragraph.localized_version.field_two_column_cta_block
+field_name: field_two_column_cta_block
+entity_type: paragraph
+bundle: localized_version
+label: 'Localized Two-Column CTA'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:block_content'
+  handler_settings:
+    target_bundles:
+      two_column_cta_block: two_column_cta_block
+    sort:
+      field: _none
+      direction: ASC
+    auto_create: false
+    auto_create_bundle: ''
+field_type: entity_reference

@@ -1,0 +1,20 @@
+uuid: 5c48a44f-4c15-4813-a1cb-7975e618cabd
+langcode: en
+status: true
+dependencies:
+  module:
+    - block_content
+    - paragraphs
+id: paragraph.field_standard_cta_block
+field_name: field_standard_cta_block
+entity_type: paragraph
+type: entity_reference
+settings:
+  target_type: block_content
+module: core
+locked: false
+cardinality: 1
+translatable: true
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false

@@ -1,0 +1,21 @@
+uuid: 8b12855a-0474-489a-9ff7-325f69c95408
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_state
+    - paragraphs.paragraphs_type.localized_version
+  module:
+    - options
+id: paragraph.localized_version.field_state
+field_name: field_state
+entity_type: paragraph
+bundle: localized_version
+label: State
+description: ''
+required: true
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: list_string

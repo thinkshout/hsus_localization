@@ -1,0 +1,202 @@
+uuid: 4e55005a-8716-4782-a427-8cf42618e7c2
+langcode: en
+status: true
+dependencies:
+  config:
+    - block_content.type.homepage_hero_block
+    - field.storage.block_content.field_localized_versions
+    - paragraphs.paragraphs_type.localized_version
+  module:
+    - entity_reference_revisions
+id: block_content.homepage_hero_block.field_localized_versions
+field_name: field_localized_versions
+entity_type: block_content
+bundle: homepage_hero_block
+label: 'Localized versions'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:paragraph'
+  handler_settings:
+    target_bundles:
+      localized_version: localized_version
+    negate: 0
+    target_bundles_drag_drop:
+      2_column_cta:
+        weight: 59
+        enabled: false
+      3_column_images_w_title_overlay:
+        weight: 60
+        enabled: false
+      3_column_strong_ctas:
+        weight: 61
+        enabled: false
+      blurb:
+        weight: 62
+        enabled: false
+      built_card:
+        weight: 63
+        enabled: false
+      built_list:
+        weight: 64
+        enabled: false
+      calendar:
+        weight: 65
+        enabled: false
+      card_cta:
+        weight: 66
+        enabled: false
+      circle_stat:
+        weight: 67
+        enabled: false
+      circle_stats:
+        weight: 68
+        enabled: false
+      content_listing:
+        weight: 69
+        enabled: false
+      cta_banner:
+        weight: 70
+        enabled: false
+      curated_cta_card_list:
+        weight: 71
+        enabled: false
+      curated_issues_block:
+        weight: 72
+        enabled: false
+      cursive_stat:
+        weight: 73
+        enabled: false
+      cursive_stats:
+        weight: 74
+        enabled: false
+      custom_homepage_hero:
+        weight: 75
+        enabled: false
+      donation_request:
+        weight: 76
+        enabled: false
+      embedded_image:
+        weight: 77
+        enabled: false
+      event_card:
+        weight: 79
+        enabled: false
+      events_list:
+        weight: 78
+        enabled: false
+      filmstrip:
+        weight: 80
+        enabled: false
+      filmstrip_cell_cta:
+        weight: 81
+        enabled: false
+      flexible_3_up_circles_block_:
+        weight: 82
+        enabled: false
+      flexible_facts_with_background:
+        weight: 83
+        enabled: false
+      full_stat:
+        weight: 84
+        enabled: false
+      hero_banner_cta:
+        weight: 85
+        enabled: false
+      homepage_hero_block:
+        weight: 86
+        enabled: false
+      icon_fact:
+        weight: 87
+        enabled: false
+      icon_facts:
+        weight: 88
+        enabled: false
+      icon_stat:
+        weight: 89
+        enabled: false
+      icon_stats:
+        weight: 90
+        enabled: false
+      inline_cta_block:
+        weight: 91
+        enabled: false
+      inline_media:
+        weight: 92
+        enabled: false
+      localized_version:
+        weight: 93
+        enabled: true
+      magazine_cta:
+        weight: 94
+        enabled: false
+      minimal_card:
+        weight: 95
+        enabled: false
+      petstore:
+        weight: 96
+        enabled: false
+      pullquote:
+        weight: 97
+        enabled: false
+      random_big_fight:
+        weight: 98
+        enabled: false
+      related_articles_and_resources_c:
+        weight: 99
+        enabled: false
+      related_articles_and_resources_g:
+        weight: 100
+        enabled: false
+      related_articles_resources_list:
+        weight: 101
+        enabled: false
+      related_blog_list:
+        weight: 102
+        enabled: false
+      related_resource_link:
+        weight: 103
+        enabled: false
+      related_view_blog:
+        weight: 104
+        enabled: false
+      rich_text:
+        weight: 105
+        enabled: false
+      side_by_side:
+        weight: 106
+        enabled: false
+      standard_cta:
+        weight: 107
+        enabled: false
+      stat_grid:
+        weight: 108
+        enabled: false
+      sticky_cta:
+        weight: 109
+        enabled: false
+      story_block:
+        weight: 110
+        enabled: false
+      strong_cta:
+        weight: 111
+        enabled: false
+      take_action:
+        weight: 112
+        enabled: false
+      text_fact:
+        weight: 113
+        enabled: false
+      text_facts:
+        weight: 114
+        enabled: false
+      two_column_images:
+        weight: 115
+        enabled: false
+      volunteer_location:
+        weight: 116
+        enabled: false
+field_type: entity_reference_revisions

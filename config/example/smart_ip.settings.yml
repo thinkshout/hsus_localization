@@ -1,0 +1,30 @@
+_core:
+  default_config_hash: shw4iv2Lr5GoD_YlLlPuo621mnZN7b4SZJVcphJ-G54
+langcode: en
+data_source: maxmind_geoip2_bin_db
+roles_to_geolocate:
+  anonymous: '0'
+  authenticated: '0'
+  article_editor: '0'
+  content_editor: '0'
+  administrator: '0'
+  petstores: '0'
+save_user_location_creation: false
+roles_in_debug_mode:
+  anonymous: false
+  authenticated: false
+  article_editor: false
+  content_editor: false
+  administrator: false
+  petstores: false
+roles_in_debug_mode_ip:
+  anonymous: ''
+  authenticated: ''
+  article_editor: ''
+  content_editor: ''
+  administrator: ''
+  petstores: ''
+allowed_pages: ''
+excluded_ips: ''
+eu_visitor_dont_save: false
+timezone_format: identifier
